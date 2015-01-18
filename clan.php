@@ -43,11 +43,11 @@ if(empty($result['status']) || $result['status'] == 'error'){
             or die("Ошибка  : " . mysqli_connect_error()); 
 
   $sql = "SELECT b.user_id, b.field_value FROM xf_user_field_value AS b WHERE b.field_value<>'';";
-    $q = mysqli_query($sql);
+    $q = mysqli_query($link, $sql);
      while($line = mysqli_fetch_assoc($q))
      {
           $db_users[] = $line["field_value"];
-         var_dump($db); 
+         var_dump($line["field_value"]); 
      }
 
 

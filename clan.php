@@ -35,7 +35,7 @@ if(empty($result['status']) || $result['status'] == 'error'){
 /*ЭТО НАЧАЛО*/  
 
     $myhost = 'localhost';
-    $myuser = 'root';
+    $myuser = 'test';
     $mypassw = '123456789';
     $mybd = 'xenforo';
 

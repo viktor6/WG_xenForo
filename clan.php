@@ -31,6 +31,32 @@ if(empty($result['status']) || $result['status'] == 'error'){
     }
     echo '</div>';
 }else{
+
+/*ЭТО НАЧАЛО*/  
+
+    $myhost = 'localhost';
+    $myuser = 'root';
+    $mypassw = '123456789';
+    $mybd = 'xenforo';
+
+    $link = mysqli_connect($myhost,$myuser,$mypassw,$mybd)
+            or die("Ошибка  : " . mysqli_connect_error()); 
+
+  $sql = "SELECT b.user_id, b.field_value FROM xf_user_field_value AS b WHERE b.field_value<>'';";
+    $q = mysqli_query($sql);
+     while($line = mysqli_fetch_assoc($q))
+     {
+          $db_users[] = $line["field_value"];
+         var_dump($db); 
+     }
+
+
+     //var_dump($q);
+
+
+
+
+
     	foreach($result['data'] as $clan) {
 
         echo '<div style="background-color: #EDEDE8;">';
@@ -39,9 +65,16 @@ if(empty($result['status']) || $result['status'] == 'error'){
 		foreach($clan['members'] as $member_id => $member_data){
             echo "  <b>Nickname_id:</b> " . $member_data['account_id'] . "<br/>";
 			echo "  <b>Nickname:</b> " . $member_data['account_name'] . "<br/>";
+
+        if (in_array($db_users, $member_data['account_name'])) 
+         {
+    $sql = "UPDATE xf_user SET `user_group_id`=4` where `field_value` ='".$member_data['account_name']."';";
+     
+    }
+     
+
 			echo "  <b>Role:</b> " . $member_data['role_i18n'] . "<br/>";
-			echo "  <b>В клане:</b> "
-                 . date('d.m.Y H:i', $member_data['created_at']) . "<br/>";
+			echo "  <b>В клане:</b> " . date('d.m.Y H:i', $member_data['created_at']) . "<br/>";
 			echo "  <b>role2:</b> " . $member_data['role'] . "<br/>";
 			echo "  ======================== <br/>"	 ;
         }

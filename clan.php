@@ -47,7 +47,7 @@ if(empty($result['status']) || $result['status'] == 'error'){
      while($line = mysqli_fetch_assoc($q))
      {
           $db_users[] = $line["field_value"];
-         //var_dump($db_users); 
+        // var_dump($db_users); 
      }
 
 //$clan_users = array_keys ($member_data['account_name']);
@@ -65,12 +65,14 @@ if(empty($result['status']) || $result['status'] == 'error'){
 		foreach($clan['members'] as $member_id => $member_data){
             echo "  <b>Nickname_id:</b> " . $member_data['account_id'] . "<br/>";
 			echo "  <b>Nickname:</b> " . $member_data['account_name'] . "<br/>";
-              $api_users = json_decode(curl_exec($result['data']), true);
-var_dump($api_users);
-        if (in_array($db_users, $member_data['account_name'])) 
+//var_dump($member_data['account_name'], in_array($db_users, $member_data['account_name']));
+   //           $api_users = json_decode(curl_exec($result['data']), true);
+//var_dump($db_users);
+        if (in_array($member_data['account_name'], $db_users))  
          {
-    $sql = "UPDATE xf_user SET `user_group_id`=4` where `field_value` ='".$member_data['account_name']."';";
-     
+    $sql = "UPDATE xf_user SET `secondary_group_ids`=`4` where `user_id` ='".$member_data['account_name']."';";
+      $q = mysqli_query($link, $sql);
+var_dump($sql);
     }
      
 

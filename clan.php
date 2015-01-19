@@ -69,11 +69,12 @@ if(empty($result['status']) || $result['status'] == 'error'){
 //var_dump($member_data['account_name'], in_array($db_users[$line['field_value']], $member_data['account_name']));
    //           $api_users = json_decode(curl_exec($result['data']), true);
 //var_dump($db_users);
-        if (in_array($member_data['account_name'], $db_users))  
+       // if (in_array($member_data['account_name'], $db_users))
+          if (isset($db_users[$member_data['account_name']]))  
          {
- //   $sql = "UPDATE xf_user SET `secondary_group_ids`=`4` where `user_id` ='".."';";
+     $sql = "UPDATE xf_user SET `secondary_group_ids`=`4` where `user_id` ='".$db_users[$member_data['account_name']]."';";
       $q = mysqli_query($link, $sql);
-var_dump($sql);
+//var_dump($sql);
     }
      
 

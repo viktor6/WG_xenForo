@@ -47,7 +47,7 @@ if(empty($result['status']) || $result['status'] == 'error'){
      while($line = mysqli_fetch_assoc($q))
      {
           $db_users[] = $line["field_value"];
-        // var_dump($db_users); 
+         var_dump($line); 
      }
 
 //$clan_users = array_keys ($member_data['account_name']);

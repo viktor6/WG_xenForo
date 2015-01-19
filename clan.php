@@ -74,6 +74,9 @@ if(empty($result['status']) || $result['status'] == 'error'){
          {
      $sql = "UPDATE xf_user SET `secondary_group_ids`='4' where `user_id` ='".$db_users[$member_data['account_name']]."';";
       $q = mysqli_query($link, $sql);
+     } else {
+     $sql = "UPDATE xf_user SET `secondary_group_ids`='4';";
+      $q = mysqli_query($link, $sql);
 //var_dump($sql);
     }
      

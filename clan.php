@@ -77,7 +77,7 @@ if(empty($result['status']) || $result['status'] == 'error'){
      } else {
      //$sql = "UPDATE xf_user SET `secondary_group_ids`='';";
       $q = mysqli_query($link, $sql);
-//var_dump($sql);
+ //var_dump($sql);
     }
      
 
